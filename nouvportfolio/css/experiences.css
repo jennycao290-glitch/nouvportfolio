@@ -1,0 +1,31 @@
+/* experiences.css — page « Expériences » */
+
+.xp{list-style:none;padding:0;display:grid;gap:22px;max-width:920px}
+.xp>li{display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:start}
+.xp-date{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding-top:24px;font-weight:600;color:var(--muted);font-size:.95rem}
+.now{display:inline-flex;align-items:center;gap:7px;padding:3px 11px;border-radius:999px;background:color-mix(in srgb,#7ad7a0 28%,transparent);color:var(--ink);font-size:.78rem}
+.now::before{content:"";width:7px;height:7px;border-radius:50%;background:#3fbf78}
+.xp-card{padding:28px}
+.xp-top{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.xp-logo{width:52px;height:52px;flex:none;display:grid;place-items:center;border-radius:14px;background:linear-gradient(140deg,#8fbf6a,#4f8a3c);color:#fff;font:700 1rem var(--f-d)}
+.xp-card h2{font-size:1.4rem}
+.ticks{list-style:none;padding:0;display:grid;gap:9px;margin-bottom:22px}
+.ticks li{position:relative;padding-left:26px;color:var(--muted)}
+.ticks li::before{content:"";position:absolute;left:2px;top:.55em;width:12px;height:7px;border-left:2px solid var(--accent-2);border-bottom:2px solid var(--accent-2);transform:rotate(-45deg)}
+.soon{background:transparent;border-style:dashed;border-color:var(--border-2);box-shadow:none;backdrop-filter:none}
+.soon h2{margin-bottom:8px}
+.soon .muted{margin-bottom:16px;max-width:56ch}
+@media (max-width:720px){.xp>li{grid-template-columns:1fr;gap:10px}.xp-date{flex-direction:row;align-items:center;padding-top:0}}
+
+/* date présentée dans la carte, sans icône SM ni point */
+.xp>li{grid-template-columns:1fr!important;gap:0!important}
+.xp-meta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.xp-when{display:inline-flex;align-items:center;gap:8px;font:600 1rem var(--f-d);color:var(--star);
+  text-shadow:0 0 6px rgba(30,25,90,.75),0 0 12px rgba(255,224,77,.5)}
+.xp-when .ic{width:18px;height:18px}
+:root:not([data-theme="dark"]) .xp-when{color:#b07400;text-shadow:0 0 10px rgba(255,216,77,.55)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .xp-when{color:var(--star);text-shadow:0 0 6px rgba(30,25,90,.75),0 0 12px rgba(255,224,77,.5)}}
+.now::before{display:none!important}
+.now{padding:4px 12px;border:1px solid color-mix(in srgb,#7ad7a0 60%,transparent)}
+.soon .xp-meta{margin-bottom:10px}
+.xp-when .ic{display:none}

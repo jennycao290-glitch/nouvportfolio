@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="fr" id="top">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="title.home">Jenny Cao | Portfolio développeuse web</title>
+<meta name="description" content="Portfolio de Jenny Cao, étudiante en BUT MMI parcours Développement web.">
+<meta name="theme-color" content="#12184f">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&text=%E4%B9%A6%E6%B3%95&display=swap">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/accueil.css">
+<script>try{var t=localStorage.getItem('jenny-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+</head>
+<body>
+<nav class="bottom-nav" aria-label="Menu"><a class="bn-home" href="index.html" aria-label="Accueil" aria-current=page><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V20h5v-5.5h3V20h5V9.5"/></svg></a><a href="moi.html"><span data-i18n="nav.about">À propos</span></a><a href="competences.html"><span data-i18n="nav.skills">Compétences</span></a><a href="projets.html"><span data-i18n="nav.projects">Projets</span></a><a href="experiences.html"><span data-i18n="nav.xp">Expériences</span></a></nav><a class="skip" href="#contenu" data-i18n="a11y.skip">Aller au contenu</a>
+<header class="site-header">
+  <div class="container bar">
+    <a class="brand" href="index.html" aria-label="Jenny Cao | accueil"><img class="logo" src="images/logo.png" alt="Jenny" width="72" height="53"><span class="brand-name sr">Jenny Cao</span><span class="brand-role" data-i18n="brand.role">Développeuse web</span></a>
+    <nav class="nav" id="nav" aria-label="Navigation principale"><a href="index.html" aria-current="page"><span data-i18n="nav.home">Accueil</span></a><a href="moi.html"><span data-i18n="nav.about">À propos</span></a><a href="competences.html"><span data-i18n="nav.skills">Compétences</span></a><a href="projets.html"><span data-i18n="nav.projects">Projets</span></a><a href="experiences.html"><span data-i18n="nav.xp">Expériences</span></a><a class="nav-cta" href="#contact"><span data-i18n="nav.contact">Contact</span></a></nav>
+    <div class="actions">
+      <div class="lang">
+        <button class="icon-btn lang-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Langue"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3Z"/></svg><span class="lang-code">FR</span><svg class="ic caret" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <ul class="lang-menu" role="menu" hidden>
+          <li role="none"><button type="button" role="menuitemradio" data-lang="fr" aria-checked="true">Français</button></li>
+          <li role="none"><button type="button" role="menuitemradio" data-lang="en" aria-checked="false">English</button></li>
+          <li role="none"><button type="button" role="menuitemradio" data-lang="zh" aria-checked="false">中文</button></li>
+        </ul>
+      </div>
+      <button class="toggle theme-btn" type="button" aria-label="Changer de thème"><span class="knob"></span></button>
+      <button class="icon-btn burger" type="button" aria-controls="nav" aria-expanded="false" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<main id="contenu">
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-txt">
+      <p class="status" tabindex="0" role="button"><span data-i18n="h.status">BUT MMI 2ᵉ année en Développement web</span></p>
+      <h1><span data-i18n="h.title">De l’imagination <em>au code.</em></span></h1>
+      <p class="lead"><span data-i18n="h.lead">Je m’appelle Jenny Cao. Je conçois et développe des expériences web soignées, où la technique se met au service de la créativité.</span></p>
+      <div class="btns">
+        <a class="btn btn-primary" href="projets.html"><span data-i18n="h.cta1">Voir mes projets</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="#contact"><span data-i18n="h.cta2">Me contacter</span></a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="hangs hero-hangs"><button class="hang" type="button" style="left:4%;--h:46px" aria-expanded="false" aria-label="Étoile 1"><span class="line"></span><img class="hs" src="images/etoile.png" alt="" aria-hidden="true"><span class="bubble" data-i18n="phrase.0">Le ciel est un programme infini dont les étoiles sont les lignes de code.</span></button><button class="hang" type="button" style="left:32%;--h:104px" aria-expanded="false" aria-label="Étoile 2"><span class="line"></span><img class="hs" src="images/etoile.png" alt="" aria-hidden="true"><span class="bubble" data-i18n="phrase.1">Au cœur du néant, une seule ligne de code suffit à donner naissance à l’infini.</span></button><button class="hang" type="button" style="left:60%;--h:22px" aria-expanded="false" aria-label="Étoile 3"><span class="line"></span><img class="hs" src="images/etoile.png" alt="" aria-hidden="true"><span class="bubble" data-i18n="phrase.2">Chaque étoile est un pixel dans le code de l’univers.</span></button><button class="hang" type="button" style="left:90%;--h:80px" aria-expanded="false" aria-label="Étoile 4"><span class="line"></span><img class="hs" src="images/etoile.png" alt="" aria-hidden="true"><span class="bubble" data-i18n="phrase.3">while (universe) { create_stars(); } La création n’a jamais cessé.</span></button></div>
+      <div class="sky-card" aria-hidden="true">
+        <div class="shooting"><svg class="tails"><path class="tg t1" style="--L:28;stroke-width:0.7" pathLength="100" d="M 600 -40 Q 300 0 110 340"/><path class="tg t1" style="--L:25;stroke-width:1.0" pathLength="100" d="M 600 -40 Q 300 0 110 340"/><path class="tg t1" style="--L:22;stroke-width:1.3" pathLength="100" d="M 600 -40 Q 300 0 110 340"/><path class="tg t1" style="--L:19;stroke-width:1.6" pathLength="100" d="M 600 -40 Q 300 0 110 340"/><path class="tg t1" style="--L:16;stroke-width:1.9" pathLength="100" d="M 600 -40 Q 300 0 110 340"/><path class="tg t1" style="--L:13;stroke-width:2.2" pathLength="100" d="M 600 -40 Q 300 0 110 340"/><path class="tg t1" style="--L:10;stroke-width:2.5" pathLength="100" d="M 600 -40 Q 300 0 110 340"/><path class="tg t1" style="--L:7;stroke-width:2.8" pathLength="100" d="M 600 -40 Q 300 0 110 340"/><path class="tg t1" style="--L:4;stroke-width:3.1" pathLength="100" d="M 600 -40 Q 300 0 110 340"/><path class="tg t2" style="--L:28;stroke-width:0.7" pathLength="100" d="M 620 140 Q 360 120 170 480"/><path class="tg t2" style="--L:25;stroke-width:1.0" pathLength="100" d="M 620 140 Q 360 120 170 480"/><path class="tg t2" style="--L:22;stroke-width:1.3" pathLength="100" d="M 620 140 Q 360 120 170 480"/><path class="tg t2" style="--L:19;stroke-width:1.6" pathLength="100" d="M 620 140 Q 360 120 170 480"/><path class="tg t2" style="--L:16;stroke-width:1.9" pathLength="100" d="M 620 140 Q 360 120 170 480"/><path class="tg t2" style="--L:13;stroke-width:2.2" pathLength="100" d="M 620 140 Q 360 120 170 480"/><path class="tg t2" style="--L:10;stroke-width:2.5" pathLength="100" d="M 620 140 Q 360 120 170 480"/><path class="tg t2" style="--L:7;stroke-width:2.8" pathLength="100" d="M 620 140 Q 360 120 170 480"/><path class="tg t2" style="--L:4;stroke-width:3.1" pathLength="100" d="M 620 140 Q 360 120 170 480"/><path class="tg t3" style="--L:28;stroke-width:0.7" pathLength="100" d="M 460 -60 Q 180 -10 -40 280"/><path class="tg t3" style="--L:25;stroke-width:1.0" pathLength="100" d="M 460 -60 Q 180 -10 -40 280"/><path class="tg t3" style="--L:22;stroke-width:1.3" pathLength="100" d="M 460 -60 Q 180 -10 -40 280"/><path class="tg t3" style="--L:19;stroke-width:1.6" pathLength="100" d="M 460 -60 Q 180 -10 -40 280"/><path class="tg t3" style="--L:16;stroke-width:1.9" pathLength="100" d="M 460 -60 Q 180 -10 -40 280"/><path class="tg t3" style="--L:13;stroke-width:2.2" pathLength="100" d="M 460 -60 Q 180 -10 -40 280"/><path class="tg t3" style="--L:10;stroke-width:2.5" pathLength="100" d="M 460 -60 Q 180 -10 -40 280"/><path class="tg t3" style="--L:7;stroke-width:2.8" pathLength="100" d="M 460 -60 Q 180 -10 -40 280"/><path class="tg t3" style="--L:4;stroke-width:3.1" pathLength="100" d="M 460 -60 Q 180 -10 -40 280"/><path class="tg t4" style="--L:28;stroke-width:0.7" pathLength="100" d="M 640 280 Q 360 260 210 640"/><path class="tg t4" style="--L:25;stroke-width:1.0" pathLength="100" d="M 640 280 Q 360 260 210 640"/><path class="tg t4" style="--L:22;stroke-width:1.3" pathLength="100" d="M 640 280 Q 360 260 210 640"/><path class="tg t4" style="--L:19;stroke-width:1.6" pathLength="100" d="M 640 280 Q 360 260 210 640"/><path class="tg t4" style="--L:16;stroke-width:1.9" pathLength="100" d="M 640 280 Q 360 260 210 640"/><path class="tg t4" style="--L:13;stroke-width:2.2" pathLength="100" d="M 640 280 Q 360 260 210 640"/><path class="tg t4" style="--L:10;stroke-width:2.5" pathLength="100" d="M 640 280 Q 360 260 210 640"/><path class="tg t4" style="--L:7;stroke-width:2.8" pathLength="100" d="M 640 280 Q 360 260 210 640"/><path class="tg t4" style="--L:4;stroke-width:3.1" pathLength="100" d="M 640 280 Q 360 260 210 640"/><path class="tg t5" style="--L:28;stroke-width:0.7" pathLength="100" d="M 560 -60 Q 400 220 40 470"/><path class="tg t5" style="--L:25;stroke-width:1.0" pathLength="100" d="M 560 -60 Q 400 220 40 470"/><path class="tg t5" style="--L:22;stroke-width:1.3" pathLength="100" d="M 560 -60 Q 400 220 40 470"/><path class="tg t5" style="--L:19;stroke-width:1.6" pathLength="100" d="M 560 -60 Q 400 220 40 470"/><path class="tg t5" style="--L:16;stroke-width:1.9" pathLength="100" d="M 560 -60 Q 400 220 40 470"/><path class="tg t5" style="--L:13;stroke-width:2.2" pathLength="100" d="M 560 -60 Q 400 220 40 470"/><path class="tg t5" style="--L:10;stroke-width:2.5" pathLength="100" d="M 560 -60 Q 400 220 40 470"/><path class="tg t5" style="--L:7;stroke-width:2.8" pathLength="100" d="M 560 -60 Q 400 220 40 470"/><path class="tg t5" style="--L:4;stroke-width:3.1" pathLength="100" d="M 560 -60 Q 400 220 40 470"/><path class="tg t6" style="--L:28;stroke-width:0.7" pathLength="100" d="M 660 40 Q 420 40 250 400"/><path class="tg t6" style="--L:25;stroke-width:1.0" pathLength="100" d="M 660 40 Q 420 40 250 400"/><path class="tg t6" style="--L:22;stroke-width:1.3" pathLength="100" d="M 660 40 Q 420 40 250 400"/><path class="tg t6" style="--L:19;stroke-width:1.6" pathLength="100" d="M 660 40 Q 420 40 250 400"/><path class="tg t6" style="--L:16;stroke-width:1.9" pathLength="100" d="M 660 40 Q 420 40 250 400"/><path class="tg t6" style="--L:13;stroke-width:2.2" pathLength="100" d="M 660 40 Q 420 40 250 400"/><path class="tg t6" style="--L:10;stroke-width:2.5" pathLength="100" d="M 660 40 Q 420 40 250 400"/><path class="tg t6" style="--L:7;stroke-width:2.8" pathLength="100" d="M 660 40 Q 420 40 250 400"/><path class="tg t6" style="--L:4;stroke-width:3.1" pathLength="100" d="M 660 40 Q 420 40 250 400"/></svg><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="win-bar"><span>jenny.js</span></div>
+        <pre class="code"><code><span class="k">const</span> jenny = {
+  formation: <span class="s">"BUT MMI"</span>,
+  parcours:  <span class="s">"Développement web"</span>,
+  aime:      [<span class="s">"code"</span>, <span class="s">"design"</span>, <span class="s">"création"</span>],
+};
+
+<span class="k">while</span> (universe) {
+  <span class="f">createStars</span>();
+}</code></pre>
+        <svg class="constellation" viewBox="0 0 300 160">
+          <polyline points="20,120 80,70 140,95 205,40 270,62" />
+          <g class="pts"><circle cx="20" cy="120" r="3"/><circle cx="80" cy="70" r="3.5"/><circle cx="140" cy="95" r="3"/><circle cx="205" cy="40" r="4.5"/><circle cx="270" cy="62" r="3"/></g>
+        </svg>
+      </div>
+      <span class="glow g1"></span><span class="glow g2"></span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="sec-head reveal">
+      <p class="eyebrow"><span data-i18n="h.exp">Explorer</span></p>
+      <h2><span data-i18n="h.exph">Découvrez mon univers</span></h2>
+    </div>
+    <div class="nav-grid"><a class="portal reveal" href="moi.html"><span class="go"><svg class="ic thick" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M12.5 6l6 6-6 6"/></svg></span><h3 data-i18n="h.c1t">À propos</h3><p data-i18n="h.c1d">Mon parcours, ma formation et ce qui me motive.</p></a><a class="portal reveal" href="competences.html"><span class="go"><svg class="ic thick" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M12.5 6l6 6-6 6"/></svg></span><h3 data-i18n="h.c2t">Compétences</h3><p data-i18n="h.c2d">Les langages et logiciels que j’utilise.</p></a><a class="portal reveal" href="projets.html"><span class="go"><svg class="ic thick" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M12.5 6l6 6-6 6"/></svg></span><h3 data-i18n="h.c3t">Projets</h3><p data-i18n="h.c3d">Une sélection de réalisations, du design au code.</p></a><a class="portal reveal" href="experiences.html"><span class="go"><svg class="ic thick" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M12.5 6l6 6-6 6"/></svg></span><h3 data-i18n="h.c4t">Expériences</h3><p data-i18n="h.c4d">Mes expériences professionnelles.</p></a></div>
+  </div>
+</section>
+
+<section class="section quote-sec reveal">
+  <div class="container">
+    <blockquote class="quote"><img class="ic-star" src="images/etoile.png" alt="" aria-hidden="true"><p><span data-i18n="h.quote">Le ciel est un programme infini dont les étoiles sont les lignes de code.</span></p></blockquote>
+  </div>
+</section>
+<section class="section contact reveal" id="contact" aria-labelledby="contact-t">
+  <div class="container contact-box">
+    <div class="contact-intro">
+      <p class="eyebrow"><span data-i18n="c.eyebrow">Contact</span></p>
+      <h2 id="contact-t"><span data-i18n="c.title">Travaillons ensemble.</span></h2>
+      <p class="muted"><span data-i18n="c.lead">Une idée, un projet, un stage ? Écrivez-moi, je vous réponds rapidement.</span></p>
+      <a class="btn btn-primary" href="mailto:jennycao290@gmail.com"><span data-i18n="c.cta">M’écrire un e-mail</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="contact-list"><a class="c-item" href="mailto:jennycao290@gmail.com"><span class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg></span><span class="c-tx"><b data-i18n="c.mail">E-mail</b><span>jennycao290@gmail.com</span></span><span class="c-go"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="c-item" href="tel:+33758459965"><span class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg></span><span class="c-tx"><b data-i18n="c.tel">Téléphone</b><span>07 58 45 99 65</span></span><span class="c-go"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="c-item" href="https://www.linkedin.com/in/jenny-cao-225264cj0" target="_blank" rel="noopener"><span class="c-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.2 8.6a1.9 1.9 0 1 0 0-3.8 1.9 1.9 0 0 0 0 3.8ZM3.6 10h3.2v10H3.6V10Zm5.2 0h3v1.4c.5-.9 1.6-1.7 3.2-1.7 3.2 0 3.8 2.1 3.8 4.9V20h-3.2v-4.8c0-1.2 0-2.6-1.6-2.6s-1.9 1.2-1.9 2.5V20H8.8V10Z"/></svg></span><span class="c-tx"><b>LinkedIn</b><span>Jenny Cao</span></span><span class="c-go"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="c-item" href="https://github.com/jennycao290-glitch" target="_blank" rel="noopener"><span class="c-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.6 2 12.2c0 4.5 2.9 8.3 6.8 9.7.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.4-3.4-1.4-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .8.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.5 9.5 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.8v2.6c0 .3.2.6.7.5A10.2 10.2 0 0 0 22 12.2C22 6.6 17.5 2 12 2Z"/></svg></span><span class="c-tx"><b>GitHub</b><span>jennycao290-glitch</span></span><span class="c-go"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><div class="c-item"><span class="c-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.2 3C5.2 3 2 5.7 2 9.1c0 1.9 1 3.6 2.6 4.7L4 16l2.5-1.3c.8.2 1.7.4 2.7.4h.6c-.1-.4-.2-.8-.2-1.2 0-3 2.8-5.4 6.2-5.4h.6C15.9 5 12.9 3 9.2 3Zm-2.6 3.8a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8Zm5.2 0a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8ZM16 10.8c-3 0-5.3 2-5.3 4.5s2.4 4.5 5.3 4.5c.7 0 1.3-.1 1.9-.3l2 1-.5-1.8c1.2-.8 1.9-2 1.9-3.4 0-2.5-2.3-4.5-5.3-4.5Zm-1.8 2.9a.8.8 0 1 1 0 1.6.8.8 0 0 1 0-1.6Zm3.6 0a.8.8 0 1 1 0 1.6.8.8 0 0 1 0-1.6Z"/></svg></span><span class="c-tx"><b>WeChat</b><span>jenny07cao</span></span></div></div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container foot">
+    <p><span data-i18n="f.copy">© 2026 Jenny Cao, Portfolio</span></p>
+    <a class="to-top" href="#top"><span data-i18n="f.top">Haut de page</span> ↑</a>
+  </div>
+</footer>
+<script src="js/i18n.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

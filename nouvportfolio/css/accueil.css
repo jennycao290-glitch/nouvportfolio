@@ -1,0 +1,308 @@
+/* accueil.css — page d’accueil */
+
+.hero{overflow-x:clip;padding:clamp(40px,7vw,96px) 0 clamp(48px,6vw,80px)}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,5vw,72px);align-items:center}
+.status{display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 12px;margin-bottom:26px;border-radius:999px;
+  background:var(--surface);border:1px solid var(--border);font-size:.86rem;font-weight:500;color:var(--muted);backdrop-filter:blur(8px)}
+.status .dot{width:8px;height:8px;border-radius:50%;background:var(--star);box-shadow:0 0 0 4px color-mix(in srgb,var(--star) 30%,transparent);animation:pulse 2.4s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 7px color-mix(in srgb,var(--star) 0%,transparent)}}
+.hero h1{margin-bottom:22px}
+.hero h1 em{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lead{margin-bottom:34px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+
+/* visuel : fenêtre de code dans le ciel */
+.hero-art{position:relative}
+.sky-card{position:relative;z-index:1;border-radius:22px;overflow:hidden;background:var(--code-bg);color:var(--code-ink);
+  box-shadow:0 40px 80px -30px rgba(12,17,70,.65),0 0 0 1px rgba(255,255,255,.08) inset;transform:rotate(1.5deg);transition:transform .5s}
+.sky-card:hover{transform:rotate(0)}
+.sky-card::before{content:"";position:absolute;inset:0;background:url(../images/fond-etoiles.png) 0 0/420px auto;opacity:.55;pointer-events:none}
+.win-bar{position:relative;display:flex;align-items:center;gap:7px;padding:14px 18px;border-bottom:1px solid rgba(255,255,255,.08)}
+.win-bar span{font:500 .8rem ui-monospace,Menlo,Consolas,monospace;opacity:.6}
+.code{position:relative;margin:0;padding:24px 24px 8px;font:400 clamp(.78rem,1.15vw,.92rem)/1.75 ui-monospace,'SF Mono',Menlo,Consolas,monospace;white-space:pre;overflow-x:auto}
+.code .k{color:#c6a6ff}.code .s{color:var(--star)}.code .f{color:#8cd3ff}
+.constellation{position:relative;display:block;width:100%;height:auto;padding:0 12px 14px}
+.constellation polyline{fill:none;stroke:rgba(255,216,77,.45);stroke-width:1;stroke-dasharray:3 4}
+.constellation circle{fill:var(--star);filter:drop-shadow(0 0 5px var(--star))}
+.constellation .pts circle{animation:twinkle 3s ease-in-out infinite}
+.constellation .pts circle:nth-child(2){animation-delay:.6s}.constellation .pts circle:nth-child(4){animation-delay:1.2s}
+@keyframes twinkle{50%{opacity:.45}}
+.glow{position:absolute;border-radius:50%;filter:blur(40px);pointer-events:none}
+.g1{width:220px;height:220px;right:-40px;top:-50px;background:var(--star-glow);opacity:.5}
+.g2{width:260px;height:260px;left:-60px;bottom:-70px;background:var(--accent-2);opacity:.28}
+
+/* cartes « Explorer » : portails en arche, reflet doré au survol */
+.nav-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.portal{position:relative;isolation:isolate;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;
+  min-height:300px;padding:34px 22px 24px;overflow:hidden;
+  border-radius:999px 999px 26px 26px / 190px 190px 26px 26px;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--sky-1) 30%,transparent),var(--surface) 55%);
+  border:1px solid var(--border-2);box-shadow:var(--shadow);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  transition:transform .35s,box-shadow .35s,border-color .35s}
+.portal::before{content:"";position:absolute;inset:0;z-index:-1;background:url(../images/fond-etoiles.png) 0 0/360px auto;opacity:.45;
+  -webkit-mask-image:linear-gradient(#000,transparent 60%);mask-image:linear-gradient(#000,transparent 60%)}
+.portal::after{content:"";position:absolute;top:-20%;bottom:-20%;left:-110%;width:45%;z-index:2;pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,224,77,.0) 20%,rgba(255,232,120,.55) 50%,rgba(255,224,77,0) 80%,transparent);
+  transform:skewX(-18deg);transition:left .8s cubic-bezier(.3,.7,.3,1)}
+.p-star{display:grid;place-items:center;width:78px;height:78px;margin-bottom:auto;border-radius:50%;
+  background:radial-gradient(closest-side,var(--star-glow),transparent);transition:transform .5s}
+.p-star .ic-star{width:46px;height:46px;filter:drop-shadow(0 0 10px rgba(255,224,77,.9))}
+.portal h3{font-size:1.3rem;margin-top:14px}
+.portal p{color:var(--muted);font-size:.92rem;line-height:1.5}
+.portal .go{margin-top:14px;width:48px;height:48px;display:grid;place-items:center;border-radius:50%;
+  background:var(--star);color:var(--star-ink);box-shadow:0 0 0 6px color-mix(in srgb,var(--star) 22%,transparent),0 0 22px var(--star-glow);transition:transform .3s,box-shadow .3s}
+.ic.thick{width:22px;height:22px;stroke-width:3}
+.portal:hover,.portal:focus-visible{transform:translateY(-6px);border-color:color-mix(in srgb,var(--star) 75%,transparent);
+  box-shadow:0 0 0 1px color-mix(in srgb,var(--star) 55%,transparent),0 0 34px -4px var(--star-glow),var(--shadow-lg)}
+.portal:hover::after,.portal:focus-visible::after{left:120%}
+.portal:hover .p-star{transform:rotate(72deg) scale(1.08)}
+.portal:hover .go{transform:translateX(4px);box-shadow:0 0 0 8px color-mix(in srgb,var(--star) 28%,transparent),0 0 32px var(--star-glow)}
+
+/* citation */
+.quote-sec{padding-top:0;padding-bottom:clamp(32px,5vw,56px)}
+.quote{display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center;max-width:760px;margin:0 auto}
+.quote .ic-star{width:26px;height:26px}
+.quote p{font:500 clamp(1.3rem,2.6vw,1.85rem)/1.35 var(--f-d);letter-spacing:-.01em;text-wrap:balance}
+
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-art{max-width:520px}
+  .nav-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:560px){
+  .btns .btn{flex:1}
+}
+.hero-grid>*{min-width:0}
+.btn{white-space:nowrap}
+@media (max-width:560px){.sky-card{transform:none}.status{font-size:.8rem}}
+/* étoiles suspendues de l'accueil : elles pendent au-dessus de la carte de code */
+.hero{position:relative}
+.hero-art{padding-top:clamp(120px,11vw,150px)}
+.hero-hangs{position:absolute;top:calc(-1 * clamp(40px,7vw,96px));left:0;right:0;translate:none;width:auto;height:0}
+@media (max-width:980px){.hero-art{padding-top:200px;margin-top:-10px}.hero-hangs{top:0}}
+@media (max-width:600px){.hero-art{padding-top:180px}.hero-hangs .hang{width:46px}.hero-hangs .hang:nth-child(2){--h:110px!important}}
+}
+@media (max-width:600px){
+  .hero{padding:28px 0 40px}
+  .hero h1{font-size:clamp(2.2rem,10.5vw,2.9rem)}
+  .status{margin-bottom:20px}
+  .code{padding:18px 16px 4px;font-size:.74rem}
+  .nav-grid{gap:12px}
+  .portal{min-height:250px;padding:26px 12px 18px;border-radius:999px 999px 20px 20px / 80px 80px 20px 20px}
+  .portal h3{font-size:1.08rem;margin-top:8px}
+  .portal p{font-size:.8rem}
+  .p-star{width:60px;height:60px}.p-star .ic-star{width:36px;height:36px}
+  .portal .go{width:42px;height:42px}
+  .quote p{font-size:1.25rem}
+}
+/* « au code. » reste groupé sur sa propre ligne, avec son dégradé violet */
+.hero h1 em{display:inline-block;padding-right:.04em}
+/* Explorer : sans étoile, flèche en haut à droite */
+.portal{justify-content:flex-end;align-items:flex-start;text-align:left;padding:30px 24px 28px}
+.portal h3{margin-top:0}
+.portal .go{position:absolute;top:60px;right:20px;margin:0}
+.portal:hover .go{transform:translate(3px,-3px) rotate(-45deg)}
+@media (max-width:600px){
+  .portal{padding:22px 14px 18px;min-height:220px}
+  .portal .go{top:40px;right:12px;width:38px;height:38px}
+  .portal .go .ic{width:18px;height:18px}
+}
+@media (min-width:601px){.portal{min-height:250px}}
+/* Explorer : textes jaunes lumineux, comme les phrases des étoiles.
+   Les cartes deviennent des fenêtres de nuit (dans les deux thèmes) pour que le jaune ressorte. */
+.portal{background:linear-gradient(180deg,#1b2163,#10154a 70%);border-color:rgba(255,255,255,.14)}
+.portal::before{opacity:.8;-webkit-mask-image:none;mask-image:none}
+.portal h3,.portal p{color:var(--star);font-family:var(--f-d);
+  text-shadow:0 0 6px rgba(30,25,90,.75),0 0 14px rgba(30,25,90,.55),0 0 12px rgba(255,224,77,.55);transition:text-shadow .4s}
+.portal h3{font-weight:700}
+.portal p{font-weight:500;opacity:.92}
+.portal:hover h3,.portal:focus-visible h3,.portal:hover p,.portal:focus-visible p{
+  text-shadow:0 0 6px rgba(30,25,90,.75),0 0 18px rgba(255,224,77,.85),0 0 30px rgba(255,224,77,.45)}
+
+/* Mode jour : carte jenny.js claire au lieu du bleu nuit */
+:root:not([data-theme="dark"]) .sky-card{background:linear-gradient(160deg,rgba(255,255,255,.92),rgba(236,229,255,.88));color:#2a2f66;
+  box-shadow:0 40px 80px -30px rgba(74,53,133,.45),0 0 0 1px rgba(255,255,255,.7) inset}
+:root:not([data-theme="dark"]) .sky-card::before{opacity:.18}
+:root:not([data-theme="dark"]) .win-bar{border-color:rgba(74,53,133,.12)}
+:root:not([data-theme="dark"]) .code .k{color:#7b4fd6}
+:root:not([data-theme="dark"]) .code .s{color:#b7791f}
+:root:not([data-theme="dark"]) .code .f{color:#1f7f9a}
+:root:not([data-theme="dark"]) .constellation polyline{stroke:rgba(183,121,31,.55)}
+:root:not([data-theme="dark"]) .constellation circle{fill:#f2b81f}
+/* Mode jour : cartes Explorer en violet profond plutôt qu'en bleu nuit */
+:root:not([data-theme="dark"]) .portal{background:linear-gradient(180deg,#6d52b8,#46307f 75%);border-color:rgba(255,255,255,.25)}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .sky-card{background:var(--code-bg);color:var(--code-ink);box-shadow:0 40px 80px -30px rgba(12,17,70,.65),0 0 0 1px rgba(255,255,255,.08) inset}
+  :root:not([data-theme="light"]) .sky-card::before{opacity:.55}
+  :root:not([data-theme="light"]) .win-bar{border-color:rgba(255,255,255,.08)}
+  :root:not([data-theme="light"]) .code .k{color:#c6a6ff}
+  :root:not([data-theme="light"]) .code .s{color:var(--star)}
+  :root:not([data-theme="light"]) .code .f{color:#8cd3ff}
+  :root:not([data-theme="light"]) .constellation polyline{stroke:rgba(255,216,77,.45)}
+  :root:not([data-theme="light"]) .constellation circle{fill:var(--star)}
+  :root:not([data-theme="light"]) .portal{background:linear-gradient(180deg,#1b2163,#10154a 70%);border-color:rgba(255,255,255,.14)}
+}
+:root:not([data-theme="dark"]) .hero h1 em{background-image:linear-gradient(90deg,#5b2a8c,#4a36b0)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hero h1 em{background-image:linear-gradient(90deg,var(--accent),var(--accent-2))}}
+
+/* étoiles filantes derrière la carte jenny.js */
+.shooting{position:absolute;inset:-12% -14% -8% -18%;z-index:0;pointer-events:none;overflow:hidden}
+.shooting i{position:absolute;width:150px;height:2px;border-radius:2px;rotate:-35deg;opacity:0;
+  background:linear-gradient(90deg,rgba(255,224,77,0),rgba(255,236,150,.9) 80%,#fff);
+  filter:drop-shadow(0 0 6px rgba(255,224,77,.9));animation:shoot 5.5s linear infinite}
+.shooting i::after{content:"";position:absolute;right:-2px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:#fff;box-shadow:0 0 10px 3px rgba(255,224,77,.9)}
+.shooting i:nth-child(1){left:70%;top:6%;animation-delay:0s}
+.shooting i:nth-child(2){left:95%;top:28%;animation-delay:1.3s;width:110px}
+.shooting i:nth-child(3){left:55%;top:2%;animation-delay:2.6s;width:180px}
+.shooting i:nth-child(4){left:105%;top:48%;animation-delay:3.4s}
+.shooting i:nth-child(5){left:85%;top:-4%;animation-delay:4.4s;width:120px}
+.shooting i:nth-child(6){left:110%;top:18%;animation-delay:.7s;width:90px}
+@keyframes shoot{
+  0%{opacity:0;transform:translate(0,0)}
+  4%{opacity:1}
+  22%{opacity:1}
+  30%{opacity:0;transform:translate(-460px,322px)}
+  100%{opacity:0;transform:translate(-460px,322px)}
+}
+.shooting i{transform-origin:right center}
+.sky-card{position:relative;z-index:1}
+@media (max-width:600px){.shooting i{width:90px}}
+/* sens corrigé : la tête lumineuse est devant, la traînée derrière */
+.shooting{inset:-30% -30% -10% -30%}
+.shooting i{background:linear-gradient(90deg,#fff,rgba(255,236,150,.9) 20%,rgba(255,224,77,0))}
+.shooting i::after{right:auto;left:-2px}
+.shooting i:nth-child(1){left:62%;top:10%}
+.shooting i:nth-child(2){left:92%;top:20%}
+.shooting i:nth-child(3){left:40%;top:4%}
+.shooting i:nth-child(4){left:98%;top:44%}
+.shooting i:nth-child(5){left:78%;top:2%}
+.shooting i:nth-child(6){left:100%;top:8%}
+:root:not([data-theme="dark"]) .shooting i{filter:drop-shadow(0 0 6px rgba(255,200,40,.95))}
+/* trajectoires dans l'espace libre autour de la carte (au-dessus et à gauche) */
+.shooting{inset:-40% -25% -10% -45%;overflow:visible}
+.shooting i{height:2.5px}
+.shooting i:nth-child(1){left:70%;top:2%}
+.shooting i:nth-child(2){left:100%;top:12%}
+.shooting i:nth-child(3){left:52%;top:-2%}
+.shooting i:nth-child(4){left:92%;top:28%}
+.shooting i:nth-child(5){left:84%;top:-6%}
+.shooting i:nth-child(6){left:105%;top:0%}
+:root:not([data-theme="dark"]) .shooting i{background:linear-gradient(90deg,#fff7c2,#ffd23a 25%,rgba(255,210,58,0));filter:drop-shadow(0 0 5px #ffc21a) drop-shadow(0 0 10px rgba(255,194,26,.7))}
+
+/* étoiles filantes DANS la carte jenny.js, plus lentes */
+.sky-card .shooting{position:absolute;inset:0;z-index:0;overflow:hidden}
+.sky-card .win-bar,.sky-card .code,.sky-card .constellation{position:relative;z-index:1}
+.sky-card .shooting i{width:120px;animation:shoot 13s linear infinite}
+.sky-card .shooting i:nth-child(1){left:78%;top:-4%;animation-delay:0s}
+.sky-card .shooting i:nth-child(2){left:105%;top:22%;animation-delay:2.2s;width:90px}
+.sky-card .shooting i:nth-child(3){left:60%;top:-6%;animation-delay:4.4s;width:140px}
+.sky-card .shooting i:nth-child(4){left:108%;top:50%;animation-delay:6.6s}
+.sky-card .shooting i:nth-child(5){left:95%;top:2%;animation-delay:8.8s;width:100px}
+.sky-card .shooting i:nth-child(6){left:110%;top:35%;animation-delay:11s;width:80px}
+@keyframes shoot{
+  0%{opacity:0;transform:translate(0,0)}
+  3%{opacity:1}
+  24%{opacity:1}
+  32%{opacity:0;transform:translate(-520px,364px)}
+  100%{opacity:0;transform:translate(-520px,364px)}
+}
+
+/* étoiles filantes : trajet en courbe, encore plus lentes, opacité 65 % */
+.sky-card .shooting i{left:0!important;top:0!important;rotate:none;transform:none;
+  background:linear-gradient(90deg,rgba(255,224,77,0),rgba(255,236,150,.9) 80%,#fff);
+  offset-rotate:auto;offset-anchor:right center;animation:shootc 22s cubic-bezier(.35,.05,.6,1) infinite}
+.sky-card .shooting i::after{left:auto;right:-2px}
+.sky-card .shooting i:nth-child(1){offset-path:path("M 560 -40 Q 360 60 120 320");animation-delay:0s}
+.sky-card .shooting i:nth-child(2){offset-path:path("M 600 120 Q 420 160 180 470");animation-delay:3.7s}
+.sky-card .shooting i:nth-child(3){offset-path:path("M 420 -60 Q 260 30 -40 260");animation-delay:7.3s}
+.sky-card .shooting i:nth-child(4){offset-path:path("M 620 260 Q 400 300 220 640");animation-delay:11s}
+.sky-card .shooting i:nth-child(5){offset-path:path("M 520 -50 Q 380 140 60 460");animation-delay:14.7s}
+.sky-card .shooting i:nth-child(6){offset-path:path("M 640 40 Q 470 90 260 380");animation-delay:18.3s}
+@keyframes shootc{
+  0%{offset-distance:0%;opacity:0}
+  2%{opacity:.65}
+  26%{opacity:.65}
+  32%{offset-distance:100%;opacity:0}
+  100%{offset-distance:100%;opacity:0}
+}
+
+/* traînée courbe : un trait SVG qui suit la même courbe que la tête */
+.sky-card .shooting i{width:8px;height:8px;background:none}
+.sky-card .shooting i::after{right:0}
+.tails{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.tails path{fill:none;stroke-linecap:round;opacity:0;animation-duration:22s;animation-iteration-count:infinite;animation-timing-function:cubic-bezier(.35,.05,.6,1)}
+.tails .tl{stroke:rgba(255,224,77,.55);stroke-width:1.4;stroke-dasharray:16 200;animation-name:tailL;filter:drop-shadow(0 0 4px rgba(255,224,77,.8))}
+.tails .tc{stroke:rgba(255,244,200,.95);stroke-width:2.4;stroke-dasharray:6 200;animation-name:tailC}
+.tails .t1{animation-delay:0s}.tails .t2{animation-delay:3.7s}.tails .t3{animation-delay:7.3s}
+.tails .t4{animation-delay:11s}.tails .t5{animation-delay:14.7s}.tails .t6{animation-delay:18.3s}
+@keyframes tailL{0%{stroke-dashoffset:16;opacity:0}2%{opacity:.65}26%{opacity:.65}32%{stroke-dashoffset:-84;opacity:0}100%{stroke-dashoffset:-84;opacity:0}}
+@keyframes tailC{0%{stroke-dashoffset:6;opacity:0}2%{opacity:.65}26%{opacity:.65}32%{stroke-dashoffset:-94;opacity:0}100%{stroke-dashoffset:-94;opacity:0}}
+:root:not([data-theme="dark"]) .tails .tl{stroke:rgba(255,194,26,.75)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tails .tl{stroke:rgba(255,224,77,.55)}}
+
+/* têtes : nth-of-type (le SVG est le premier enfant) + courbes plus marquées */
+.sky-card .shooting i{width:8px!important;height:8px}
+.sky-card .shooting i:nth-of-type(1){offset-path:path("M 600 -40 Q 300 0 110 340");animation-delay:0s}
+.sky-card .shooting i:nth-of-type(2){offset-path:path("M 620 140 Q 360 120 170 480");animation-delay:3.7s}
+.sky-card .shooting i:nth-of-type(3){offset-path:path("M 460 -60 Q 180 -10 -40 280");animation-delay:7.3s}
+.sky-card .shooting i:nth-of-type(4){offset-path:path("M 640 280 Q 360 260 210 640");animation-delay:11s}
+.sky-card .shooting i:nth-of-type(5){offset-path:path("M 560 -60 Q 400 220 40 470");animation-delay:14.7s}
+.sky-card .shooting i:nth-of-type(6){offset-path:path("M 660 40 Q 420 40 250 400");animation-delay:18.3s}
+/* traînée un peu plus longue pour bien voir la courbe */
+.tails .tl{stroke-dasharray:26 200;animation-name:tailL2}
+@keyframes tailL2{0%{stroke-dashoffset:26;opacity:0}2%{opacity:.65}26%{opacity:.65}32%{stroke-dashoffset:-74;opacity:0}100%{stroke-dashoffset:-74;opacity:0}}
+
+/* traînée fluide : 9 couches superposées, de plus en plus courtes et épaisses vers la tête
+   → la couleur s'intensifie en douceur et le trait s'affine vers l'arrière */
+.tails .tg{fill:none;stroke:rgb(255,232,140);stroke-linecap:round;stroke-dasharray:calc(var(--L) * 1px) 300px;
+  stroke-dasharray:var(--L) 300;opacity:0;animation:tailG 22s cubic-bezier(.35,.05,.6,1) infinite}
+@keyframes tailG{
+  0%{stroke-dashoffset:var(--L);opacity:0}
+  2%{opacity:.2}26%{opacity:.2}
+  32%{stroke-dashoffset:calc(var(--L) - 100);opacity:0}
+  100%{stroke-dashoffset:calc(var(--L) - 100);opacity:0}}
+.tails{filter:drop-shadow(0 0 3px rgba(255,224,77,.6))}
+:root:not([data-theme="dark"]) .tails .tg{stroke:rgb(255,196,40)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tails .tg{stroke:rgb(255,232,140)}}
+.tails .tg.t1{animation-delay:0s}.tails .tg.t2{animation-delay:3.7s}.tails .tg.t3{animation-delay:7.3s}
+.tails .tg.t4{animation-delay:11s}.tails .tg.t5{animation-delay:14.7s}.tails .tg.t6{animation-delay:18.3s}
+
+/* une animation par longueur de couche (valeurs sans unité, alignées sur la tête) */
+@keyframes tg28{0%{stroke-dashoffset:28;opacity:0}2%{opacity:.2}26%{opacity:.2}32%{stroke-dashoffset:-72;opacity:0}100%{stroke-dashoffset:-72;opacity:0}}
+.tails .tg[style*="--L:28;"]{animation-name:tg28;stroke-dasharray:28 300}
+@keyframes tg25{0%{stroke-dashoffset:25;opacity:0}2%{opacity:.2}26%{opacity:.2}32%{stroke-dashoffset:-75;opacity:0}100%{stroke-dashoffset:-75;opacity:0}}
+.tails .tg[style*="--L:25;"]{animation-name:tg25;stroke-dasharray:25 300}
+@keyframes tg22{0%{stroke-dashoffset:22;opacity:0}2%{opacity:.2}26%{opacity:.2}32%{stroke-dashoffset:-78;opacity:0}100%{stroke-dashoffset:-78;opacity:0}}
+.tails .tg[style*="--L:22;"]{animation-name:tg22;stroke-dasharray:22 300}
+@keyframes tg19{0%{stroke-dashoffset:19;opacity:0}2%{opacity:.2}26%{opacity:.2}32%{stroke-dashoffset:-81;opacity:0}100%{stroke-dashoffset:-81;opacity:0}}
+.tails .tg[style*="--L:19;"]{animation-name:tg19;stroke-dasharray:19 300}
+@keyframes tg16{0%{stroke-dashoffset:16;opacity:0}2%{opacity:.2}26%{opacity:.2}32%{stroke-dashoffset:-84;opacity:0}100%{stroke-dashoffset:-84;opacity:0}}
+.tails .tg[style*="--L:16;"]{animation-name:tg16;stroke-dasharray:16 300}
+@keyframes tg13{0%{stroke-dashoffset:13;opacity:0}2%{opacity:.2}26%{opacity:.2}32%{stroke-dashoffset:-87;opacity:0}100%{stroke-dashoffset:-87;opacity:0}}
+.tails .tg[style*="--L:13;"]{animation-name:tg13;stroke-dasharray:13 300}
+@keyframes tg10{0%{stroke-dashoffset:10;opacity:0}2%{opacity:.2}26%{opacity:.2}32%{stroke-dashoffset:-90;opacity:0}100%{stroke-dashoffset:-90;opacity:0}}
+.tails .tg[style*="--L:10;"]{animation-name:tg10;stroke-dasharray:10 300}
+@keyframes tg7{0%{stroke-dashoffset:7;opacity:0}2%{opacity:.2}26%{opacity:.2}32%{stroke-dashoffset:-93;opacity:0}100%{stroke-dashoffset:-93;opacity:0}}
+.tails .tg[style*="--L:7;"]{animation-name:tg7;stroke-dasharray:7 300}
+@keyframes tg4{0%{stroke-dashoffset:4;opacity:0}2%{opacity:.2}26%{opacity:.2}32%{stroke-dashoffset:-96;opacity:0}100%{stroke-dashoffset:-96;opacity:0}}
+.tails .tg[style*="--L:4;"]{animation-name:tg4;stroke-dasharray:4 300}
+
+/* badge « BUT MMI… » : le point est retiré, c'est la barre entière qui pulse en jaune */
+.status{padding:8px 16px;border-color:color-mix(in srgb,var(--star) 70%,transparent);
+  box-shadow:0 0 0 0 color-mix(in srgb,var(--star) 45%,transparent);animation:barpulse 2.4s infinite}
+@keyframes barpulse{
+  0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--star) 45%,transparent)}
+  70%{box-shadow:0 0 0 9px color-mix(in srgb,var(--star) 0%,transparent)}
+  100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--star) 0%,transparent)}}
+@media (prefers-reduced-motion:reduce){.status{animation:none}}
+
+/* interaction fun : au survol la barre s'illumine, au clic elle lance une pluie d'étoiles */
+.status{cursor:pointer;user-select:none;transition:transform .25s,background .3s,color .3s}
+.status:hover{transform:translateY(-2px) scale(1.03);background:color-mix(in srgb,var(--star) 18%,var(--surface));color:var(--ink)}
+.status:active{transform:scale(.96)}
+.burst-star{position:fixed;left:0;top:0;z-index:4000;width:18px;height:18px;pointer-events:none;
+  filter:drop-shadow(0 0 6px rgba(255,224,77,.9));will-change:transform,opacity}
+
+/* lumière jaune en forme d'étoile sur la carte du hero */
+.glow.g1{border-radius:0;filter:none;background:url(../images/etoile-lumiere.svg) center/contain no-repeat;opacity:.55;
+  width:240px;height:240px;right:-50px;top:-70px;animation:lightstar 9s ease-in-out infinite}

@@ -1,0 +1,220 @@
+/* competences.css — page « Compétences » */
+
+.skill-group{margin-bottom:56px}
+.g-head{display:flex;align-items:center;gap:18px;padding-bottom:18px;margin-bottom:22px;border-bottom:1px solid var(--border-2)}
+.g-num{font:600 .9rem var(--f-d);color:var(--soft);align-self:flex-start;margin-top:8px}
+.g-head h2{font-size:clamp(1.4rem,2.4vw,1.8rem)}
+.g-head .muted{font-size:.95rem}
+.g-count{margin-left:auto;min-width:36px;height:36px;display:grid;place-items:center;border-radius:50%;border:1px solid var(--border-2);font-weight:600;font-size:.9rem;color:var(--muted)}
+.skills{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;padding:0;list-style:none}
+.skill{display:flex;gap:16px;align-items:flex-start;padding:18px;transition:transform .25s,border-color .25s}
+.skill:hover{transform:translateY(-3px);border-color:var(--border-2)}
+.s-ico{width:52px;height:52px;flex:none;display:grid;place-items:center;border-radius:14px;background:var(--surface-solid);border:1px solid var(--border)}
+.s-ico img{width:34px;height:34px;object-fit:contain}
+.skill h4{font-size:1.05rem;margin:2px 0 4px}
+.skill p{font-size:.9rem;line-height:1.5;color:var(--muted)}
+.soft{padding:32px;border-radius:var(--radius);border:1px dashed var(--border-2)}
+.soft h2{font-size:1.4rem;margin-bottom:18px}
+
+/* ---------- Vue ciel (reprise du nuage d'outils) ---------- */
+.view-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}
+.switch{display:inline-flex;padding:4px;border-radius:999px;background:var(--surface);border:1px solid var(--border-2)}
+.switch button{display:inline-flex;align-items:center;gap:7px;height:38px;padding:0 16px;border:0;border-radius:999px;background:none;cursor:pointer;font-weight:500;color:var(--muted)}
+.switch button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+.hint{font-size:.92rem}
+.views[data-view="ciel"] .list{display:none}
+.views[data-view="liste"] .sky{display:none}
+.views[data-view="liste"] ~ .soft{margin-top:0}
+
+.sky{position:relative;height:clamp(460px,52vw,600px);margin-bottom:56px;border-radius:28px;overflow:hidden;
+  background:linear-gradient(170deg,#8f80b8,#c9bfe2 70%,#e9e4f5);border:1px solid var(--border);box-shadow:var(--shadow-lg)}
+:root[data-theme="dark"] .sky{background:linear-gradient(170deg,#0a0f3d,#1d2470 75%,#2a3285)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .sky{background:linear-gradient(170deg,#0a0f3d,#1d2470 75%,#2a3285)}}
+.sky::before{content:"";position:absolute;inset:0;background:url(../images/fond-etoiles.png) 0 0/520px auto;opacity:.7}
+.cloud{position:absolute;left:50%;top:-4%;width:min(520px,62%);translate:-50% 0;opacity:.95;pointer-events:none;animation:drift 14s ease-in-out infinite}
+.cloud.night{display:none}
+:root[data-theme="dark"] .cloud.day{display:none}:root[data-theme="dark"] .cloud.night{display:block}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cloud.day{display:none}:root:not([data-theme="light"]) .cloud.night{display:block}}
+@keyframes drift{50%{translate:-48% 6px}}
+.links{position:absolute;inset:0;width:100%;height:100%}
+.links polyline{fill:none;stroke:rgba(255,216,77,.55);stroke-width:1.2;stroke-dasharray:3 5;vector-effect:non-scaling-stroke;transition:stroke .3s,opacity .3s}
+.sky.focus .links polyline{opacity:.25}
+.sky.focus .links polyline.on{opacity:1;stroke:var(--star)}
+.sky-tool{position:absolute;translate:-50% -50%;width:58px;height:58px;padding:8px;border-radius:16px;border:1px solid rgba(255,255,255,.35);
+  background:rgba(255,255,255,.82);box-shadow:0 8px 20px -8px rgba(12,17,70,.45);cursor:pointer;transition:transform .25s,box-shadow .25s,opacity .25s}
+.sky-tool img{width:100%;height:100%;object-fit:contain}
+.sky-name{position:absolute;left:50%;top:calc(100% + 6px);translate:-50% 0;white-space:nowrap;font:600 .78rem var(--f-b);color:#12184f;
+  background:rgba(255,255,255,.9);padding:2px 8px;border-radius:999px;opacity:0;transition:opacity .2s}
+.sky-tool:hover,.sky-tool:focus-visible,.sky-tool.on{transform:scale(1.14);box-shadow:0 0 0 3px var(--star),0 0 26px 2px var(--star-glow);z-index:3}
+.sky-tool:hover .sky-name,.sky-tool:focus-visible .sky-name,.sky-tool.on .sky-name{opacity:1}
+.sky.focus .sky-tool:not(.on):not(.same){opacity:.45}
+.sky-info{position:absolute;left:20px;top:20px;width:min(320px,calc(100% - 40px));padding:18px 20px;z-index:4;background:var(--surface-solid)}
+.si-g{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--soft);margin-bottom:4px}
+.si-n{font-size:1.3rem;margin-bottom:4px}
+.si-d{font-size:.92rem;line-height:1.5}
+@media (max-width:700px){
+  .sky{height:560px}
+  .sky-tool{width:46px;height:46px;padding:6px;border-radius:13px}
+  .sky-info{left:12px;right:12px;top:12px;width:auto;padding:12px 14px}
+  .si-d{font-size:.85rem}
+  .cloud{width:80%}
+}
+
+/* bloc d'explication en bas du ciel, comme dans la première version (nom + description) */
+.sky-info{top:auto;bottom:20px;left:50%;translate:-50% 0;width:min(460px,calc(100% - 40px));text-align:center;padding:14px 20px}
+.sky-info .si-g{display:none}
+.sky{height:clamp(520px,58vw,660px)}
+@media (max-width:700px){.sky-info{top:auto;bottom:12px;left:12px;right:12px;width:auto;translate:none}.sky{height:620px}}
+/* phrase d'aide : jaune lumineux, comme les phrases des étoiles */
+.hint{color:var(--star)!important;font:600 1rem var(--f-d);
+  text-shadow:0 0 6px rgba(30,25,90,.75),0 0 14px rgba(30,25,90,.55),0 0 12px rgba(255,224,77,.55)}
+/* mobile : l'explication passe juste sous le ciel pour ne cacher aucune icône */
+@media (max-width:700px){
+  .sky{overflow:visible;height:560px;margin-bottom:150px}
+  .sky::before,.cloud{clip-path:inset(0 round 28px)}
+  .sky-info{top:calc(100% + 12px);bottom:auto;left:0;right:0}
+}
+/* l'explication est maintenant SOUS le ciel, en dehors du bloc */
+.sky{overflow:hidden!important;margin-bottom:16px!important}
+.sky::before,.cloud{clip-path:none}
+.sky-info{position:relative!important;inset:auto!important;translate:none!important;width:min(560px,100%)!important;margin:0 auto 56px;text-align:center}
+.views[data-view="liste"] .sky-info{display:none}
+@media (max-width:700px){.sky{height:600px}}
+
+/* explications détaillées des outils */
+.td-p{margin:0 0 10px;line-height:1.55}
+.td-pts{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+.td-pts li{position:relative;padding-left:18px;line-height:1.45;font-size:.92em}
+.td-pts li::before{content:"";position:absolute;left:2px;top:.5em;width:7px;height:7px;border-radius:50%;background:var(--star);box-shadow:0 0 6px var(--star-glow)}
+.sky-info{width:min(720px,100%)!important;text-align:left!important;padding:20px 24px!important}
+.skills{grid-template-columns:repeat(auto-fill,minmax(340px,1fr));align-items:start}
+.skill .td-p{font-size:.92rem;color:var(--muted)}
+.skill .td-pts{font-size:.88rem;color:var(--muted)}
+@media (max-width:420px){.skills{grid-template-columns:1fr}}
+.g-head{border-bottom:0!important;padding-bottom:0!important}
+
+/* bouton sélectionné « Vue ciel / Vue liste » : effet neige */
+.switch button{position:relative;overflow:hidden}
+.switch button[aria-selected="true"]{color:#1a1f4f;
+  background:linear-gradient(180deg,#ffffff,#e6efff);
+  box-shadow:0 0 14px rgba(220,235,255,.7),inset 0 -2px 4px rgba(150,180,230,.35)}
+.switch button[aria-selected="true"]::before{content:"";position:absolute;inset:-20px 0 0;pointer-events:none;
+  background-image:
+    radial-gradient(1.6px 1.6px at 10% 20%,#9fb8e8 60%,transparent 61%),
+    radial-gradient(1.2px 1.2px at 30% 60%,#b7cbef 60%,transparent 61%),
+    radial-gradient(2px 2px at 55% 30%,#9fb8e8 60%,transparent 61%),
+    radial-gradient(1.4px 1.4px at 75% 70%,#b7cbef 60%,transparent 61%),
+    radial-gradient(1.8px 1.8px at 90% 15%,#9fb8e8 60%,transparent 61%),
+    radial-gradient(1.2px 1.2px at 42% 85%,#b7cbef 60%,transparent 61%);
+  background-size:100% 30px;animation:snow 3.5s linear infinite}
+@keyframes snow{to{background-position:0 30px}}
+@media (prefers-reduced-motion:reduce){.switch button[aria-selected="true"]::before{animation:none}}
+
+/* ---------- Savoir-être : objets empilés dans une boîte au contour jaune ---------- */
+.soft{border:0;padding:0;margin-bottom:56px}
+.soft h2{margin-bottom:4px}
+.pile-hint{color:var(--star);font:600 .95rem var(--f-d);margin-bottom:14px;
+  text-shadow:0 0 6px rgba(30,25,90,.75),0 0 14px rgba(30,25,90,.55),0 0 12px rgba(255,224,77,.55)}
+.pile{position:relative;height:300px;border-radius:22px;overflow:hidden;
+  border:2px solid var(--star);
+  background:linear-gradient(180deg,var(--surface-2),var(--surface));
+  box-shadow:0 0 18px -2px var(--star-glow),inset 0 0 26px -10px var(--star-glow);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.pile .pills{padding:22px}
+.pile.physics{cursor:grab;touch-action:pan-y}
+.pile.physics:active{cursor:grabbing}
+.pile.physics .pills{padding:0}
+.pile.physics .pills li{position:absolute;left:0;top:0;white-space:nowrap;user-select:none;will-change:transform;
+  background:var(--surface-solid);border-color:color-mix(in srgb,var(--star) 55%,transparent);
+  box-shadow:0 6px 14px -6px rgba(10,12,48,.5);font-size:1rem;padding:10px 20px}
+@media (max-width:600px){.pile{height:340px}.pile.physics .pills li{font-size:.9rem;padding:8px 16px}}
+.soft{max-width:620px;margin-inline:auto;text-align:center}
+.pile{height:380px;text-align:left}
+@media (max-width:600px){.pile{height:360px}}
+/* boîte moins haute */
+.pile{height:290px}
+@media (max-width:600px){.pile{height:320px}}
+.pile-star{position:absolute;left:0;top:0;width:44px;height:44px;pointer-events:none;user-select:none;will-change:transform;
+  filter:drop-shadow(0 0 8px rgba(255,224,77,.85))}
+
+/* ---------- Savoir-être : bocal à étoiles ---------- */
+.jar{position:relative;width:min(380px,100%);margin:0 auto;padding-top:62px;transform-origin:50% 90%}
+.jar-cork{position:absolute;top:0;left:50%;translate:-50% 0;width:44%;height:44px;border-radius:14px 14px 10px 10px;z-index:2;
+  background:linear-gradient(180deg,#b8784f,#8d5634 70%,#7a472a);box-shadow:inset 0 3px 0 rgba(255,255,255,.18),inset 0 -4px 0 rgba(0,0,0,.18),0 4px 10px -4px rgba(0,0,0,.4)}
+.jar-cork::after{content:"";position:absolute;left:50%;top:12px;width:2px;height:12px;margin-left:-1px;border-radius:2px;background:rgba(60,30,15,.6)}
+.jar-neck{position:absolute;top:38px;left:50%;translate:-50% 0;width:60%;height:30px;border-radius:12px;z-index:1;
+  background:rgba(200,225,255,.22);border:3px solid rgba(215,232,255,.85);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.jar .pile{height:360px;border-radius:70px 70px 60px 60px;
+  border:3px solid rgba(215,232,255,.9);
+  background:linear-gradient(180deg,rgba(170,205,255,.22),rgba(120,165,240,.30));
+  box-shadow:0 0 22px -4px var(--star-glow),inset 0 0 30px -8px rgba(255,255,255,.35),0 18px 40px -18px rgba(10,12,48,.6)}
+.jar .pile::after{content:"";position:absolute;left:9%;top:12%;width:12px;height:52%;border-radius:12px;pointer-events:none;z-index:3;
+  background:linear-gradient(180deg,rgba(255,255,255,.75),rgba(255,255,255,0))}
+.jar .pile.physics .pills li{font-size:.88rem;padding:8px 14px}
+.jar.shaking{animation:jarshake .7s cubic-bezier(.36,.07,.19,.97)}
+@keyframes jarshake{
+  0%,100%{transform:rotate(0)}15%{transform:rotate(-9deg) translateX(-6px)}30%{transform:rotate(8deg) translateX(6px)}
+  45%{transform:rotate(-6deg) translateX(-4px)}60%{transform:rotate(5deg) translateX(3px)}75%{transform:rotate(-2deg)}}
+.shake-btn{margin-top:22px}
+.shake-btn:active{transform:scale(.95)}
+@media (max-width:600px){.jar .pile{height:360px;border-radius:56px 56px 48px 48px}}
+@media (prefers-reduced-motion:reduce){.jar.shaking{animation:none}}
+
+/* bocal : contour jaune, sans reflet, bouchon jaune lumineux */
+.jar .pile{border-color:var(--star);box-shadow:0 0 20px -2px var(--star-glow),inset 0 0 26px -10px var(--star-glow),0 18px 40px -18px rgba(10,12,48,.6)}
+.jar .pile::after{display:none}
+.jar-neck{border-color:var(--star);box-shadow:0 0 14px -3px var(--star-glow)}
+.jar-cork{background:linear-gradient(180deg,#fff1a6,#ffd84d 55%,#f2b81f);
+  box-shadow:0 0 18px 2px var(--star-glow),inset 0 3px 0 rgba(255,255,255,.6),inset 0 -4px 0 rgba(180,120,0,.25);animation:corkglow 2.6s ease-in-out infinite}
+.jar-cork::after{background:rgba(150,95,0,.45)}
+@keyframes corkglow{50%{box-shadow:0 0 30px 6px var(--star-glow),inset 0 3px 0 rgba(255,255,255,.6),inset 0 -4px 0 rgba(180,120,0,.25)}}
+@media (prefers-reduced-motion:reduce){.jar-cork{animation:none}}
+.shake-tip{display:none;margin-top:10px;font-size:.88rem;color:var(--muted)}
+@media (hover:none) and (pointer:coarse){.shake-tip{display:block}}
+.jar-cork::after{display:none}
+
+/* ---------- Mini-jeu « Quel savoir-être ? » ---------- */
+.jar-btns{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:22px}
+.jar-btns .shake-btn{margin-top:0}
+.game{margin:0 auto 18px;padding:16px 20px;border-radius:18px;text-align:center;
+  background:var(--surface);border:2px solid var(--star);box-shadow:0 0 18px -4px var(--star-glow);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.game[hidden]{display:none}
+.g-top{display:flex;justify-content:space-between;font-size:.82rem;font-weight:600;color:var(--soft);letter-spacing:.04em;margin-bottom:6px}
+.g-q{font:600 1.08rem/1.4 var(--f-d);color:var(--ink);margin-bottom:6px;min-height:2.8em;display:grid;place-items:center;text-wrap:balance}
+.g-msg{min-height:1.4em;font-size:.92rem;color:var(--muted)}
+.g-msg.ok{color:var(--star);font-weight:700;text-shadow:0 0 6px rgba(30,25,90,.75),0 0 12px rgba(255,224,77,.6)}
+.g-msg.no{color:#ff8a8a;font-weight:600}
+.game.on ~ .jar .pills li{cursor:pointer}
+.pills li.g-win{background:var(--star)!important;color:var(--star-ink)!important;border-color:var(--star)!important;box-shadow:0 0 18px var(--star-glow)!important}
+.pills li.g-wrong{background:#ff8a8a!important;color:#3a0b0b!important;border-color:#ff6b6b!important}
+:root:not([data-theme="dark"]) .g-msg.ok{color:#a86e00;text-shadow:0 0 10px rgba(255,216,77,.6)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .g-msg.ok{color:var(--star);text-shadow:0 0 6px rgba(30,25,90,.75),0 0 12px rgba(255,224,77,.6)}}
+:root:not([data-theme="dark"]) .g-msg.no{color:#c0392b}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .g-msg.no{color:#ff8a8a}}
+
+/* jeu : petit bloc DANS le bocal, score sur le bouchon, textes en jaune */
+.jar .game{position:absolute;z-index:6;left:50%;top:84px;translate:-50% 0;width:calc(100% - 44px);max-width:330px;margin:0;
+  padding:10px 14px;border-width:1.5px;border-radius:14px;pointer-events:none;
+  background:color-mix(in srgb,var(--surface-solid) 82%,transparent)}
+.jar .game .g-top{justify-content:center;margin-bottom:4px}
+.jar .game .g-score{display:none}
+.jar .game .g-q{font-size:.95rem;min-height:2.6em;margin-bottom:4px}
+.jar .game .g-round,.jar .game .g-msg{color:var(--star);font-weight:600;
+  text-shadow:0 0 6px rgba(30,25,90,.75),0 0 12px rgba(255,224,77,.5)}
+.jar .game .g-msg{font-size:.84rem}
+.jar .game .g-msg.no{color:#ff9a9a;text-shadow:none}
+:root:not([data-theme="dark"]) .jar .game .g-round,:root:not([data-theme="dark"]) .jar .game .g-msg{color:#b07400;text-shadow:0 0 10px rgba(255,216,77,.55)}
+:root:not([data-theme="dark"]) .jar .game .g-msg.no{color:#c0392b;text-shadow:none}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .jar .game .g-round,:root:not([data-theme="light"]) .jar .game .g-msg{color:var(--star);text-shadow:0 0 6px rgba(30,25,90,.75),0 0 12px rgba(255,224,77,.5)}
+  :root:not([data-theme="light"]) .jar .game .g-msg.no{color:#ff9a9a;text-shadow:none}}
+.jar-cork{display:grid;place-items:center}
+.cork-score{font:700 1rem/1 var(--f-d);color:#12184f;letter-spacing:.02em}
+.jar .pile{height:400px}
+/* icônes sans fond (ciel et liste) */
+.sky-tool{background:none!important;border:0!important;box-shadow:none!important;padding:0!important;filter:drop-shadow(0 4px 8px rgba(10,12,48,.35))}
+.sky-tool:hover,.sky-tool:focus-visible,.sky-tool.on{box-shadow:none!important;filter:drop-shadow(0 0 10px var(--star)) drop-shadow(0 0 4px var(--star))}
+.s-ico{background:none!important;border:0!important}
+.s-ico img{width:44px!important;height:44px!important}

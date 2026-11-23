@@ -1,0 +1,215 @@
+/* a-propos-de-moi.css — page « À propos » */
+
+.about-txt{max-width:900px}
+.about-txt p{font-size:1.08rem;color:var(--muted);margin-bottom:18px;max-width:62ch}
+.about-txt p:first-child{font-size:clamp(1.2rem,2vw,1.45rem);line-height:1.5;color:var(--ink);font-family:var(--f-d);font-weight:500}
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin-top:32px;padding:0;list-style:none;border-radius:16px;overflow:hidden;
+  background:var(--border);border:1px solid var(--border)}
+.facts li{display:flex;flex-direction:column;gap:4px;padding:18px 20px;background:var(--surface-solid)}
+.facts li>span:first-child{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);font-weight:600}
+.facts strong{font:600 1.05rem var(--f-d)}
+
+.facts{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:860px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.facts{grid-template-columns:1fr}}
+
+/* ---------- Mon parcours : la scène de la première version ----------
+   Traînée de nuage, avion en papier, grande étoile, et deux étoiles à survoler. */
+.parcours{padding-top:24px}
+.scene-hint{text-align:center;margin-bottom:10px;color:var(--star);font:600 1rem var(--f-d);
+  text-shadow:0 0 6px rgba(30,25,90,.75),0 0 14px rgba(30,25,90,.55),0 0 12px rgba(255,224,77,.55)}
+.scene{position:relative;max-width:980px;margin:0 auto}
+.stage{position:relative;aspect-ratio:772/621}
+.stage>*{position:absolute}
+.trail{inset:0;width:100%;height:100%;pointer-events:none;opacity:.95}
+:root[data-theme="dark"] .trail{opacity:.85}
+.big-star{left:2.8%;top:.8%;width:17.5%;aspect-ratio:1;display:grid;place-items:center;text-align:center;z-index:2}
+.big-star img{position:absolute;inset:0;width:100%;height:100%;opacity:.8;filter:drop-shadow(0 0 16px rgba(255,224,77,.8))}
+.big-star span{position:relative;margin-top:8%;font:700 clamp(.6rem,1.3vw,.9rem)/1.1 var(--f-d);letter-spacing:.06em;text-transform:uppercase;color:#fff;text-shadow:0 1px 4px rgba(30,25,90,.6)}
+.deco{left:15.4%;top:12.6%;width:10%;filter:drop-shadow(0 0 14px rgba(255,224,77,.85));animation:twinkle 4s ease-in-out infinite}
+@keyframes twinkle{50%{transform:scale(.9) rotate(8deg);opacity:.8}}
+.plane{left:75.5%;top:4.8%;width:16%;height:auto;filter:drop-shadow(0 6px 10px rgba(40,30,90,.25));animation:glide 5s ease-in-out infinite}
+@keyframes glide{50%{transform:translate(6px,-8px) rotate(2deg)}}
+
+/* étoiles cliquables : étoile dans un cercle de nuit */
+.stop{z-index:3;translate:-50% -50%;padding:0;border:0;background:none;cursor:pointer;color:inherit}
+.stop.s1{left:33%;top:56%}
+.stop.s2{left:68.8%;top:23.4%}
+.stop .dot{display:grid;place-items:center;width:clamp(42px,6vw,62px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 50% 40%,#1f2770,#10154a);border:1.5px solid rgba(255,255,255,.28);
+  box-shadow:0 0 0 6px rgba(255,216,77,.12),0 0 24px rgba(255,216,77,.35);transition:transform .3s,box-shadow .3s}
+.stop .dot .ic-star{width:52%;height:52%}
+.stop.s2 .dot{width:clamp(36px,5vw,52px)}
+.stop em{position:absolute;right:calc(100% + 10px);top:50%;translate:0 -50%;white-space:nowrap;font:700 clamp(.85rem,1.6vw,1.1rem) var(--f-d);font-style:normal;color:var(--star);
+  text-shadow:0 0 6px rgba(30,25,90,.75),0 0 14px rgba(30,25,90,.55),0 0 12px rgba(255,224,77,.55)}
+.stop:hover .dot,.stop:focus-visible .dot,.stop[aria-expanded="true"] .dot{transform:scale(1.12);
+  box-shadow:0 0 0 8px rgba(255,216,77,.25),0 0 34px rgba(255,216,77,.7)}
+
+/* fiches qui apparaissent au survol */
+.pop{position:absolute;z-index:5;display:grid;grid-template-columns:44% 1fr;overflow:hidden;border-radius:20px;
+  background:var(--surface-solid);border:1px solid var(--border);box-shadow:var(--shadow-lg);
+  opacity:0;visibility:hidden;translate:0 10px;transition:opacity .35s,translate .35s,visibility 0s .35s}
+.pop.open{opacity:1;visibility:visible;translate:0 0;transition-delay:0s}
+.pop.p1{left:40%;top:52%;width:min(560px,58%)}
+.pop.p2{left:36%;top:30%;width:min(560px,58%)}
+.pop-img{width:100%;height:100%;object-fit:cover;min-height:100%}
+.pop-card{padding:20px 22px}
+.pop-card h3{font-size:1.08rem;margin-bottom:2px}
+.t-date{display:inline-block;margin-bottom:8px;padding:2px 10px;border-radius:999px;background:color-mix(in srgb,var(--star) 30%,transparent);font-weight:600;font-size:.8rem}
+.t-place{color:var(--soft);font-weight:500;font-size:.85rem;margin-bottom:8px}
+.pop-card p:not(.t-date):not(.t-place){color:var(--muted);font-size:.88rem;line-height:1.5;margin-bottom:10px}
+.pop-card .link{font-size:.88rem}
+
+/* tablette et mobile : la scène reste, les fiches s'affichent en dessous */
+@media (max-width:820px){
+  .scene-hint{display:none}
+  .pop{position:static;opacity:1;visibility:visible;translate:none;width:auto!important;margin-top:16px;grid-template-columns:38% 1fr}
+  .stage{order:-2}
+  .pop.p2{order:-1}
+  .scene{display:flex;flex-direction:column}
+  .stop{pointer-events:none}
+}
+@media (max-width:520px){.pop{grid-template-columns:1fr}.pop-img{aspect-ratio:16/8;height:auto}}
+
+/* ---------- Centres d'intérêt ---------- */
+.hobbies{display:grid;grid-template-columns:1.25fr 1fr;gap:20px;align-items:stretch}
+.hobby{position:relative;display:flex;flex-direction:column;gap:16px;padding:clamp(20px,3vw,32px);overflow:hidden}
+.hobby>p{color:var(--muted);max-width:56ch}
+.hb-head{display:flex;align-items:center;gap:14px}
+.hb-head h3{font-size:1.35rem;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.hb-head .muted{font-size:.92rem}
+.hb-ico{width:52px;height:52px;flex:none;display:grid;place-items:center;border-radius:14px;background:var(--surface-solid);border:1px solid var(--border)}
+.hb-ico.zh{font:400 30px/1 'Ma Shan Zheng',serif;color:#b3261e;background:#fff8ec}
+.zh-t{font:400 1.3rem 'Ma Shan Zheng',serif;color:#c0392b}
+.arts{display:grid;gap:12px;margin-top:auto;position:relative;z-index:1}
+.arts.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.arts.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.art{position:relative;aspect-ratio:3/4;border-radius:14px;overflow:hidden;border:1px solid var(--border);
+  background:repeating-linear-gradient(-45deg,transparent 0 12px,color-mix(in srgb,var(--soft) 10%,transparent) 12px 13px),var(--surface-2)}
+.art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.art:hover img{transform:scale(1.04)}
+.art-ph{position:absolute;inset:0;display:grid;place-items:center;font-size:.85rem;font-weight:500;color:var(--soft)}
+.callig .arts.two .art{aspect-ratio:2/3}
+.big-zh{position:absolute;right:-6px;top:-18px;font:400 clamp(6rem,12vw,9rem)/1 'Ma Shan Zheng',serif;color:var(--ink);opacity:.06;pointer-events:none;writing-mode:vertical-rl}
+@media (max-width:860px){.hobbies{grid-template-columns:1fr}}
+@media (max-width:480px){.arts.three{grid-template-columns:repeat(2,minmax(0,1fr))}.arts.three .art:nth-child(3){grid-column:1 / -1;aspect-ratio:4/3}}
+.art-ph{display:flex;align-items:center;justify-content:center;gap:.3em}
+@media (max-width:600px){.big-zh{display:none}}
+.hobbies{align-items:start}
+.arts{margin-top:4px}
+.big-zh{display:none}
+
+/* ---------- Fiche rapide : système solaire ----------
+   Ton étoile au centre ; âge, formation… tournent sur les anneaux, suivis de mini étoiles. */
+.about-txt{max-width:none}
+.about-txt p{max-width:72ch}
+.orbit-sys{position:relative;height:clamp(440px,44vw,540px);margin-top:28px;overflow:hidden}
+.orbits{position:absolute;inset:0;width:100%;height:100%}
+.orbits ellipse{fill:none;stroke:color-mix(in srgb,var(--star) 45%,transparent);stroke-width:1.2;stroke-dasharray:2 7}
+.sun{position:absolute;left:50%;top:50%;width:clamp(70px,8vw,100px);translate:-50% -50%;z-index:5;
+  filter:drop-shadow(0 0 18px rgba(255,224,77,.95)) drop-shadow(0 0 40px rgba(255,224,77,.5));animation:sunspin 24s linear infinite}
+@keyframes sunspin{to{rotate:360deg}}
+.orbiters{list-style:none;margin:0;padding:0}
+.orbiter{position:absolute;left:0;top:0;z-index:8;display:flex;flex-direction:column;align-items:center;gap:1px;
+  padding:9px 16px;border-radius:999px;white-space:nowrap;will-change:transform;
+  background:color-mix(in srgb,var(--surface-solid) 88%,transparent);border:1px solid color-mix(in srgb,var(--star) 55%,transparent);
+  box-shadow:0 0 18px -4px var(--star-glow),var(--shadow);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.orbiter>span{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);font-weight:600}
+.orbiter strong{font:600 .98rem/1.25 var(--f-d)}
+.trail-star{position:absolute;left:0;top:0;z-index:7;pointer-events:none;will-change:transform,opacity;filter:drop-shadow(0 0 4px rgba(255,224,77,.9))}
+@media (max-width:700px){
+  .orbit-sys{height:560px}
+  .orbiter{padding:7px 12px}
+  .orbiter strong{font-size:.86rem}
+  .orbiter>span{font-size:.6rem}
+}
+@media (max-width:700px){
+  .orbit-sys{height:640px}
+  .orbiter{white-space:normal;max-width:128px;text-align:center;border-radius:18px;padding:6px 10px}
+  .orbiter strong{font-size:.8rem}
+}
+.hb-ico.pencil svg{width:26px;height:26px;fill:none;stroke:var(--accent);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+/* la traînée de nuage s'estompe vers le bas (plus douce sur le fond violet) */
+.trail{-webkit-mask-image:linear-gradient(to top right,transparent 4%,#000 42%);mask-image:linear-gradient(to top right,transparent 4%,#000 42%)}
+:root:not([data-theme="dark"]) .trail{opacity:.8}
+
+/* ---------- Dessins : deux catégories qui défilent toutes seules ---------- */
+.draw-tabs{display:inline-flex;flex-wrap:wrap;gap:4px;padding:4px;border-radius:999px;background:var(--surface-2);border:1px solid var(--border-2);align-self:flex-start}
+.draw-tabs button{height:36px;padding:0 14px;border:0;border-radius:999px;background:none;cursor:pointer;font-weight:500;font-size:.88rem;color:var(--muted)}
+.draw-tabs button[aria-selected="true"]{background:var(--accent-2);color:#fff;box-shadow:0 0 14px -2px color-mix(in srgb,var(--accent-2) 70%,transparent)}
+.draw-note{font-size:.88rem;margin-top:-6px}
+.marquee{overflow:hidden;margin-inline:calc(-1 * clamp(20px,3vw,32px));padding-inline:clamp(20px,3vw,32px);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.mq-track{display:flex;gap:12px;width:max-content;animation:mq 28s linear infinite}
+.mq-track .art{flex:none;width:clamp(130px,13vw,170px)}
+.marquee:hover .mq-track{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(calc(-50% - 6px))}}
+@media (prefers-reduced-motion:reduce){.mq-track{animation:none}.marquee{overflow-x:auto}}
+@media (max-width:520px){
+  .draw-tabs{display:grid;grid-template-columns:1fr 1fr;align-self:stretch;border-radius:14px}
+  .draw-tabs button{height:auto;min-height:40px;padding:6px 8px;border-radius:10px;font-size:.8rem;line-height:1.2}
+}
+
+/* ---------- Agrandir un dessin au clic ---------- */
+.art{cursor:zoom-in}
+.zoom-veil{position:fixed;inset:0;z-index:3000;background:rgba(10,12,48,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  opacity:0;transition:opacity .4s;cursor:zoom-out}
+.zoom-veil.on{opacity:1}
+.zoom-fig{position:fixed;z-index:3001;margin:0;border-radius:14px;overflow:hidden;cursor:zoom-out;
+  background:repeating-linear-gradient(-45deg,transparent 0 12px,rgba(140,140,200,.12) 12px 13px),var(--surface-solid);
+  box-shadow:0 30px 80px -20px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.15);
+  transition:left .45s cubic-bezier(.2,.8,.2,1),top .45s cubic-bezier(.2,.8,.2,1),width .45s cubic-bezier(.2,.8,.2,1),height .45s cubic-bezier(.2,.8,.2,1),border-radius .45s}
+.zoom-fig img{width:100%;height:100%;object-fit:contain;display:block}
+.zoom-fig .art-ph{position:absolute;inset:0;display:grid;place-items:center;font-size:1.1rem;color:var(--soft)}
+.marquee.paused .mq-track{animation-play-state:paused}
+
+/* anneaux en trait continu (plus de pointillés) */
+.orbits ellipse{stroke-dasharray:none;stroke-width:1;stroke:color-mix(in srgb,var(--star) 30%,transparent)}
+/* trait lumineux continu qui relie les mini étoiles de chaque traînée */
+.orbits .tail{fill:none;stroke:url(#tailGrad);stroke-width:2.2;stroke-linecap:round;filter:drop-shadow(0 0 4px rgba(255,224,77,.8))}
+:root:not([data-theme="dark"]) .orbits ellipse{stroke:rgba(110,70,190,.35);stroke-width:1.2}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .orbits ellipse{stroke:color-mix(in srgb,var(--star) 30%,transparent);stroke-width:1}}
+
+/* ---------- Parcours sur mobile : même fonctionnement, la fiche apparaît au toucher ---------- */
+@media (max-width:820px){
+  .scene-hint{display:block;font-size:.92rem}
+  .stop{pointer-events:auto}
+  .stop .dot{width:44px}
+  .stop.s2 .dot{width:40px}
+  .stop em{font-size:.8rem}
+  .pop{position:fixed;left:50%;top:50%;z-index:2600;width:min(92vw,420px)!important;max-height:84vh;overflow:auto;margin:0;
+    grid-template-columns:1fr;translate:-50% -46%;opacity:0;visibility:hidden;
+    box-shadow:0 30px 80px -20px rgba(0,0,0,.6),0 0 0 100vmax rgba(10,12,48,.55);
+    transition:opacity .3s,translate .3s,visibility 0s .3s}
+  .pop.open{opacity:1;visibility:visible;translate:-50% -50%;transition-delay:0s}
+  .pop-img{aspect-ratio:16/9;height:auto;min-height:0}
+}
+@media (max-width:820px){.pop.p1,.pop.p2{left:50%;top:50%}}
+/* 19 dessins : défilement plus long pour garder la même vitesse */
+.marquee[data-cat="orig"] .mq-track{animation-duration:95s}
+.art img{background:var(--surface-solid)}
+.zoom-fig img{position:relative;z-index:1}.zoom-fig .art-ph{z-index:0}
+/* défilement piloté en JS : on peut glisser pour aller plus vite */
+.marquee{touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+.marquee.dragging{cursor:grabbing}
+.marquee .mq-track{animation:none!important;will-change:transform}
+.marquee img{-webkit-user-drag:none;pointer-events:none}
+.marquee[data-cat="orig"] .mq-track{animation-duration:65s}
+
+/* centre d'intérêt : 3D sur Blender */
+.hobby.b3d{grid-column:1/-1;display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(18px,3vw,36px);align-items:center}
+.b3d-txt{display:flex;flex-direction:column;gap:16px}
+.b3d-txt .tool-list:empty{display:none}
+.b3d-art{aspect-ratio:3/2;border-radius:18px;overflow:hidden;cursor:zoom-in;background:#4a4658}
+.b3d-art img{width:100%;height:100%;object-fit:cover;display:block}
+@media (max-width:860px){.hobby.b3d{grid-template-columns:1fr}}
+.hb-ico.cube svg{width:26px;height:26px;fill:none;stroke:var(--accent);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.b3d-gal{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.b3d-step{margin:0;display:flex;flex-direction:column;gap:8px}
+.b3d-step:last-child{grid-column:1/-1}
+.b3d-step .art{aspect-ratio:4/3;border-radius:16px;overflow:hidden;cursor:zoom-in;background:#4a4658}
+.b3d-step:last-child .art{aspect-ratio:16/9}
+.b3d-step img{width:100%;height:100%;object-fit:cover;display:block}
+.b3d-step figcaption{font-size:.85rem;font-weight:600;color:var(--muted)}
+:root[data-theme="dark"] .b3d-step figcaption{color:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .b3d-step figcaption{color:#fff}}
